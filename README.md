@@ -1,4 +1,6 @@
 # JSON API Conformant
+[![Build Status](https://travis-ci.org/sebasoga/json_api_conformant.svg?branch=master)](https://travis-ci.org/sebasoga/json_api_conformant)
+[![Code Climate](https://codeclimate.com/github/sebasoga/json_api_conformant/badges/gpa.svg)](https://codeclimate.com/github/sebasoga/json_api_conformant)
 
 When building an API in JSON it is important to follow conventions for the so 
 that your system clients know how to send a request for the available resources 
