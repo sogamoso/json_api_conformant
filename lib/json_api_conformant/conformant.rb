@@ -6,16 +6,12 @@ module JSON
       SCHEMA_VERSION = 'draft'
 
       class << self
-        def validate(data, schema=nil, options={})
-          validator.validate(schema || schema_path, data, options)
+        def valid?(data, options={})
+          validator.validate(schema, data, options)
         end
 
-        def validate!(data, schema=nil, options={})
-          validator.validate!(schema || schema_path, data, options)
-        end
-
-        def fully_validate(data, schema=nil, options={})
-          validator.fully_validate(schema || schema_path, data, options)
+        def validate(data, options={})
+          validator.fully_validate(schema, data, options)
         end
 
         private
@@ -24,7 +20,7 @@ module JSON
           JSON::Validator
         end
 
-        def schema_path
+        def schema
           File.join(Pathname.new(File.dirname(__FILE__)).parent.parent,
                                  'schemas',
                                  "#{SCHEMA_VERSION}.json"

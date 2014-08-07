@@ -18,11 +18,11 @@ RSpec::Matchers.define :be_json_api_conformant do
   private
 
   def json_api_conformant?(data)
-    JSON::API::Conformant.validate(data)
+    JSON::API::Conformant.valid?(data)
   end
 
   def get_errors_in(data)
-    JSON::API::Conformant.fully_validate(data)
+    JSON::API::Conformant.validate(data)
   end
 
   def message_for(errors)
