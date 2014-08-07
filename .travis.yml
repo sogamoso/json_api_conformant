@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.1
+  - ruby-head
+  - jruby-1.7.9 
+  - jruby-head
+  - rbx-2.2.7
+matrix:
+  allow_failures:
+    - jruby-head
