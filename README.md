@@ -47,20 +47,18 @@ valid_schema   = {"posts" => [{"id" => "1"}]}
 invalid_schema = {"comments" => "Nice gem!"}
 
 JSON::API::Conformant.validate(valid_schema)      # => []
-JSON::API::Conformant.validate(invalid_schema)    # => ["The property
-'#/comments' of type String did not match the"]
+JSON::API::Conformant.validate(invalid_schema)    # => ["The property '#/comments' of type String did not match the..."]
 ```
 
-JSON API Conformant wraps [json-schema](https://github.com/hoxworth/json-schema, 
+JSON API Conformant wraps [json-schema](https://github.com/hoxworth/json-schema), 
 so other options that validator accepts will work here too.
 
 ### RSpec Matcher
 
 It is pretty straighword to use.
 ```ruby
-it "..." do
+it "validates that's JSON API conformant" do
   data = {"posts" => [{"id" => "1"}]}
-
   expect(data).to be_json_api_conformant
 end
 ```
