@@ -1,0 +1,57 @@
+{
+  "links": {
+    "posts.author": {
+      "href": "http://example.com/people/{posts.author}",
+      "type": "people"
+    },
+    "posts.comments": {
+      "href": "http://example.com/comments/{posts.comments}",
+      "type": "comments"
+    }
+  },
+  "posts": [{
+    "id": "1",
+    "title": "Rails is Omakase",
+    "links": {
+      "author": "9",
+      "comments": [ "1", "2", "3" ]
+    }}, {
+    "id": "2",
+    "title": "The Parley Letter",
+    "links": {
+      "author": "9",
+      "comments": [ "4", "5" ]
+   }}, {
+    "id": "3",
+    "title": "Dependency Injection is Not a Virtue",
+    "links": {
+      "author": "9",
+      "comments": [ "6" ]
+    }
+  }],
+  "linked": {
+    "people": [{
+      "id": "9",
+      "name": "@d2h"
+    }],
+    "comments": [{
+      "id": "1",
+      "body": "Mmmmmakase"
+    }, {
+      "id": "2",
+      "body": "I prefer unagi"
+    }, {
+      "id": "3",
+      "body": "What's Omakase?"
+    }, {
+      "id": "4",
+      "body": "Parley is a discussion, especially one between enemies"
+    }, {
+      "id": "5",
+      "body": "The parsley letter"
+    }, {
+      "id": "6",
+      "body": "Dependency Injection is Not a Vice"
+    }]
+  }
+}
