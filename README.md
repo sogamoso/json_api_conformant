@@ -54,8 +54,16 @@ JSON::API::Conformant.validate(invalid_schema)    # => ["The property '#/comment
 
 JSON API Conformant wraps [json-schema](https://github.com/hoxworth/json-schema), 
 so other options that validator accepts will work here too.
+```ruby
+schema = {"posts" => [{"id" => "1"}]}
+
+JSON::API::Conformant.valid?(valid_schema, insert_defaults: true)
+JSON::API::Conformant.validate(valid_schema, errors_as_objects: true)
+```
+
 
 ### RSpec Matcher
+Only tested with RSpec 3.
 
 It is pretty straighword to use.
 ```ruby
