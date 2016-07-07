@@ -7,7 +7,7 @@ describe JSON::API::Conformant do
 
   subject { JSON::API::Conformant }
 
-  describe ".validate" do
+  describe ".valid?" do
     context "when data is valid" do
       it "is true" do
         expect(subject.valid? valid_data).to be true
