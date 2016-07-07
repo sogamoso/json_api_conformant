@@ -3,7 +3,7 @@ require 'json-schema'
 module JSON
   module API
     class Conformant
-      DEFAULT_SCHEMA_VERSION = 'draft'
+      DEFAULT_SCHEMA_VERSION = '1.0'
 
       class << self
         def valid?(data, version: DEFAULT_SCHEMA_VERSION, **options)
