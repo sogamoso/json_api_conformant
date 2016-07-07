@@ -19,6 +19,18 @@ describe JSON::API::Conformant do
         expect(subject.valid? invalid_data).to be false
       end
     end
+
+    describe "version" do
+      it "defaults to draft" do
+        expect(subject).to receive(:schema).with("draft").and_call_original
+        subject.validate({})
+      end
+
+      it "can be overridden" do
+        expect(subject).to receive(:schema).with("1.0").and_call_original
+        subject.validate({}, version: "1.0")
+      end
+    end
   end
 
   describe ".validate" do
@@ -35,6 +47,25 @@ describe JSON::API::Conformant do
           "The property '#/linked/people/0' did not contain a required property of 'id' in schema http://jsonapi.org/schema#"]
         expect(subject.validate invalid_data).to eq errors
       end
+    end
+
+    describe "version" do
+      it "defaults to draft" do
+        expect(subject).to receive(:schema).with("draft").and_call_original
+        subject.validate({})
+      end
+
+      it "can be overridden" do
+        expect(subject).to receive(:schema).with("1.0").and_call_original
+        subject.validate({}, version: "1.0")
+      end
+    end
+  end
+
+  describe "#schema" do
+    it "allows version to be specified" do
+      expect(subject.send(:schema, "1.0")).to end_with "1.0.json"
+      expect(subject.send(:schema, "draft")).to end_with "draft.json"
     end
   end
 end

@@ -3,15 +3,15 @@ require 'json-schema'
 module JSON
   module API
     class Conformant
-      SCHEMA_VERSION = 'draft'
+      DEFAULT_SCHEMA_VERSION = 'draft'
 
       class << self
-        def valid?(data, options={})
-          validator.validate(schema, data, options)
+        def valid?(data, version: DEFAULT_SCHEMA_VERSION, **options)
+          validator.validate(schema(version), data, options)
         end
 
-        def validate(data, options={})
-          validator.fully_validate(schema, data, options)
+        def validate(data, version: DEFAULT_SCHEMA_VERSION, **options)
+          validator.fully_validate(schema(version), data, options)
         end
 
         private
@@ -20,10 +20,10 @@ module JSON
           JSON::Validator
         end
 
-        def schema
+        def schema(version)
           File.join(Pathname.new(File.dirname(__FILE__)).parent.parent,
                                  'schemas',
-                                 "#{SCHEMA_VERSION}.json"
+                                 "#{version}.json"
                    )
         end
       end
