@@ -63,7 +63,7 @@ JSON::API::Conformant.validate(schema, errors_as_objects: true)
 
 
 ### RSpec Matcher
-Only tested with RSpec 3.
+Only tested for RSpec 3.
 
 It is pretty straighword to use.
 ```ruby
