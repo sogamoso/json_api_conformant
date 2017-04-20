@@ -2,19 +2,19 @@
 [![Build Status](https://travis-ci.org/sebasoga/json_api_conformant.svg?branch=master)](https://travis-ci.org/sebasoga/json_api_conformant)
 [![Code Climate](https://codeclimate.com/github/sebasoga/json_api_conformant/badges/gpa.svg)](https://codeclimate.com/github/sebasoga/json_api_conformant)
 
-When building an API in JSON it is important to follow conventions for the so 
-that your system clients know how to send a request for the available resources 
-to be fetched or modified and how your system will respond to those requests.
+When building an API in JSON it is important to follow conventions so that the
+clients know how what to expect in the response when operating on the available
+resources.
 
-JSON API Conformant provides a narrow interface for validating JSON objects 
-against a [JSON API](http://jsonapi.org/) conforming 
-[JSON API schema](http://jsonapi.org/schema) and provides a custom RSpec 
+JSON API Conformant provides a narrow interface for validating JSON objects
+against the [JSON API specification](http://jsonapi.org/) using
+[the official schema](http://jsonapi.org/schema) and provides a custom RSpec
 matcher for use in your tests.
 
-**Important:** JSON API is a work in progress. The base schema is not a perfect 
-document. The fact that a JSON document validates against this schema, it does 
-not necessarily mean it is a valid JSON API document. The schema is provided by 
-JSON API for a base level sanity check.
+**Important:** Currently v1.0 specification is used as the default base schema.
+The base schema is not a perfect document. The fact that a JSON document
+validates against this schema, it does not necessarily mean it is a valid JSON
+API document. The schema is provided by JSON API for a base level sanity check.
 
 ## Installation
 
@@ -36,8 +36,8 @@ Or install it yourself as:
 
 Validate if your JSON object is JSON API conformant.
 ```ruby
-valid_schema   = {"posts" => [{"id" => "1"}]}
-invalid_schema = {"comments" => "Nice gem!"}
+valid_schema   = { "data" => [{ "type" => "posts", "id" => "1" }] }
+invalid_schema = { "data" => [{ "posts" => "1" }] }
 
 JSON::API::Conformant.valid?(valid_schema)        # => true
 JSON::API::Conformant.valid?(invalid_schema)      # => false
@@ -45,20 +45,20 @@ JSON::API::Conformant.valid?(invalid_schema)      # => false
 
 Get errors when your JSON object is JSON API not conformant.
 ```ruby
-valid_schema   = {"posts" => [{"id" => "1"}]}
-invalid_schema = {"comments" => "Nice gem!"}
+valid_schema   = { "data" => [{ "type" => "posts", "id" => "1" }] }
+invalid_schema = { "data" => [{ "posts" => "1" }] }
 
 JSON::API::Conformant.validate(valid_schema)      # => []
-JSON::API::Conformant.validate(invalid_schema)    # => ["The property '#/comments' of type String did not match the..."]
+JSON::API::Conformant.validate(invalid_schema)    # => ["The property '#/' of type object did not match any of the..."]
 ```
 
-JSON API Conformant wraps [json-schema](https://github.com/hoxworth/json-schema), 
+JSON API Conformant wraps [json-schema](https://github.com/hoxworth/json-schema),
 so other options that validator accepts will work here too.
 ```ruby
-schema = {"posts" => [{"id" => "1"}]}
+schema = { "data" => [{ "posts" => "1" }] }
 
-JSON::API::Conformant.valid?(valid_schema, insert_defaults: true)
-JSON::API::Conformant.validate(valid_schema, errors_as_objects: true)
+JSON::API::Conformant.valid?(schema, insert_defaults: true)
+JSON::API::Conformant.validate(schema, errors_as_objects: true)
 ```
 
 
