@@ -82,6 +82,9 @@ end
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create a new Pull Request
 
+Everyone interacting in this codebase and issue tracker is expected to follow
+the [code of conduct](https://github.com/sebasoga/json_api_conformant/blob/master/CODE_OF_CONDUCT.md).
+
 ## License
 
 See [LICENSE](https://github.com/sebasoga/json_api_conformant/blob/master/LICENSE.txt)
