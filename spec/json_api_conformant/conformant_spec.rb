@@ -43,18 +43,18 @@ describe JSON::API::Conformant do
     context "when data is invalid" do
       it "returns an array with the errors" do
         errors = [<<ERROR.chomp]
-The property '#/' of type Hash did not match any of the required schemas. The schema specific errors were:
+The property '#/' of type object did not match any of the required schemas. The schema specific errors were:
 
 - oneOf #0:
     - The property '#/included/0' did not contain a required property of 'id'
-    -     The property '#/data' of type Array did not match any of the required schemas. The schema specific errors were:
+    -     The property '#/data' of type array did not match any of the required schemas. The schema specific errors were:
 
     - oneOf #0:
-        - The property '#/data' of type Array did not match the following type: object
+        - The property '#/data' of type array did not match the following type: object
     - oneOf #1:
         - The property '#/data/0' did not contain a required property of 'id'
     - oneOf #2:
-        - The property '#/data' of type Array did not match the following type: null
+        - The property '#/data' of type array did not match the following type: null
 - oneOf #1:
     - The property '#/' contains additional properties ["links", "data", "included"] outside of the schema when none are allowed
     - The property '#/' did not contain a required property of 'errors'
