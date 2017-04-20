@@ -68,7 +68,7 @@ Only tested for RSpec 3.
 It is pretty straighword to use.
 ```ruby
 it "validates that's JSON API conformant" do
-  data = {"posts" => [{"id" => "1"}]}
+  data = { "data" => [{ "posts" => "1" }] }
   expect(data).to be_json_api_conformant
 end
 ```
